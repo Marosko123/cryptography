@@ -1,0 +1,135 @@
+# Sample Run Output for BEDNAR
+
+## Command 1: Atbash Cipher (Stream Mode)
+```bash
+python src/cipher.py --surname "BEDNAR" --mode stream
+```
+
+### Output:
+```
+=== TASK 1a: ATBASH CIPHER (Stream Coding) ===
+Input surname: BEDNAR
+Normalized input: BEDNAR
+
+Atbash Cipher (A↔Z):
+Plain:  A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+Cipher: Z Y X W V U T S R Q P O N M L K J I H G F E D C B A
+
+Direct numbers (A=1...Z=26):
+  B = 2
+  E = 5
+  D = 4
+  N = 14
+  A = 1
+  R = 18
+
+Reverse numbers (A=26...Z=1):
+  B = 25
+  E = 22
+  D = 23
+  N = 13
+  A = 26
+  R = 9
+
+Ciphertext: YVWMZI
+
+Timing:
+  Single operation: 0.750 μs
+  Average per character (10,000 iterations): 0.049912 μs/char
+
+Involution test: PASSED
+```
+
+## Command 2: Block Cipher (Block Mode)
+```bash
+python src/cipher.py --surname "BEDNAR" --mode block
+```
+
+### Output:
+```
+=== TASK 1b: BLOCK CIPHER (Block Coding) ===
+Input surname: BEDNAR
+Normalized input: BEDNAR
+
+Alphabet split: ABCDEFGHIJKLM | NOPQRSTUVWXYZ
+
+Part 1 (A-M):
+Plain:  A B C D E F G H I J K L M
+Cipher: M L K J I H G F E D C B A
+
+Part 2 (N-Z):
+Plain:  N O P Q R S T U V W X Y Z
+Cipher: Z Y X W V U T S R Q P O N
+
+Direct numbers (A=1...Z=26):
+  B = 2
+  E = 5
+  D = 4
+  N = 14
+  A = 1
+  R = 18
+
+Ciphertext: LIJZMV
+
+Timing:
+  Single operation: 0.917 μs
+  Average per character (10,000 iterations): 0.053417 μs/char
+
+Involution test: PASSED
+```
+
+## Command 3: Custom Block Cipher Parts
+```bash
+python src/cipher.py --surname "BEDNAR" --mode block --part1 "ABCDEFG" --part2 "HIJKLMNOPQRSTUVWXYZ"
+```
+
+### Expected Output Format:
+```
+=== TASK 1b: BLOCK CIPHER (Block Coding) ===
+Input surname: BEDNAR
+Normalized input: BEDNAR
+
+Alphabet split: ABCDEFG | HIJKLMNOPQRSTUVWXYZ
+
+Part 1 (A-G):
+Plain:  A B C D E F G
+Cipher: G F E D C B A
+
+Part 2 (H-Z):
+Plain:  H I J K L M N O P Q R S T U V W X Y Z
+Cipher: Z Y X W V U T S R Q P O N M L K J I H
+
+Direct numbers (A=1...Z=26):
+  B = 2
+  E = 5
+  D = 4
+  N = 14
+  A = 1
+  R = 18
+
+Ciphertext: FCDTGP
+
+Timing:
+  Single operation: [varies] μs
+  Average per character (10,000 iterations): [varies] μs/char
+
+Involution test: PASSED
+```
+
+## Analysis of Results
+
+### Atbash Cipher Results
+- **Input**: BEDNAR → **Ciphertext**: YVWMZI  
+- **Character mappings**: B→Y, E→V, D→W, N→M, A→Z, R→I
+- **Performance**: ~0.05 μs per character average
+
+### Block Cipher Results  
+- **Input**: BEDNAR → **Ciphertext**: LIJZMV
+- **Character mappings**: B→L, E→I, D→J, N→Z, A→M, R→V
+- **Performance**: ~0.053 μs per character average (slightly slower)
+
+### Key Observations
+1. Both ciphers pass involution test (self-inverse property)
+2. Block cipher has ~7% performance overhead compared to Atbash
+3. Different ciphertext outputs demonstrate distinct transformation rules
+4. Timing varies between runs due to system load but maintains relative performance characteristics

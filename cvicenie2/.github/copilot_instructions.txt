@@ -1,0 +1,96 @@
+ZKGRA – Lab Work 3 – Copilot/Claude Agent Instructions (plain text)
+
+You are a senior Python engineer. Build a tiny, well-tested repo that solves ZKGRA – Lab Work 3 exactly as specified below. Use only the Python standard library.
+
+DELIVERABLES
+- src/ package with three modules:
+  - polybius.py
+  - xor_utils.py
+  - entropy.py
+- main.py CLI
+- tests/ with pytest tests
+- README.md with quickstart and examples
+- pyproject.toml (minimal; enables pytest)
+
+1) POLYBIUS SQUARE (6×6)
+Implement encode (and decode for sanity checks) using this exact grid. Coordinates are row then column as two digits, both 1-based:
+
+    1 2 3 4 5 6
+1 | A B C D E F
+2 | G H I J K L
+3 | M N O P Q R
+4 | S T U V W X
+5 | Y Z 0 1 2 3
+6 | 4 5 6 7 8 9
+
+Rules:
+- Input text may contain A-Z, 0-9, spaces, and Slovak diacritics.
+- Remove diacritics (e.g., “Á”→“A”, “Č”→“C”, “Ť”→“T”) via unicodedata (no external libs).
+- Uppercase everything. Keep spaces as spaces in the encoded output.
+- encode(text) returns both:
+  (a) a string of space-separated pairs (e.g., 15 32 13 …)
+  (b) a concatenated string without spaces (e.g., 1532…)
+- decode(pairs_string) accepts space-separated pairs and returns plaintext (spaces preserved). Ignore/skip any tokens that aren’t 2 digits.
+- Hardcode the grid mapping so it exactly matches the table above.
+
+ACCEPTANCE EXAMPLES (must pass)
+- encode("ENCRYPT ME 2 DAY") =>
+  pairs:        15 32 13 36 51 34 42  31 15  55  14 11 51
+  concatenated: 15321336513442 3115 55 141151
+
+- encode("BEDNÁR") (surname with diacritics) =>
+  pairs:        12 15 14 32 11 36
+  concatenated: 121514321136
+
+Also include a round-trip test: decode(pairs)==original for a few samples (e.g., "A0Z9", "HELLO 123").
+
+2) XOR TASK
+Create helpers to work with bitstrings:
+- xor_chain(*bits: str) -> str      # XORs any number of same-length binary strings
+- evaluate_expression(a,b,c) -> str # returns a ^ b ^ c ^ a ^ b
+
+Print the results for the two given sets in main.py:
+Set 1: a=1011, b=0110, c=0100 -> result 0100
+Set 2: a=0101, b=1110, c=1101 -> result 1101
+
+Also add property tests showing a ^ b ^ c ^ a ^ b == c for random same-length bitstrings.
+
+3) ENTROPY (equiprobable)
+Implement entropy_equiprobable(n: int) -> float that returns log2(n).
+In main.py, print:
+- H(8)   = 3 bits
+- H(128) = 7 bits
+
+CLI (main.py)
+Provide arguments:
+- --encode "<text>"  => prints pairs and concatenated
+- --decode "<pairs>" => prints plaintext
+- --xor              => prints results for both predefined sets
+- --entropy N        => prints H(N); if omitted, also show H(8) and H(128)
+- --surname "<text>" => shortcut that runs encode on the surname (diacritics removed)
+
+REQUIREMENTS
+- All functions must have type hints and docstrings.
+- No external dependencies.
+- Clean, readable code.
+
+TESTS (pytest)
+Create tests that assert exactly:
+- Polybius mappings for a handful of characters: E->"15", Y->"51", 2->"55", 9->"66", etc.
+- The two acceptance examples above for full messages.
+- xor_chain correctness and evaluate_expression(...) == c for the two sets.
+- entropy_equiprobable(8)==3 and entropy_equiprobable(128)==7 (use exact integers).
+- Round-trip decode(encode(text).pairs)==normalized_text for multiple samples.
+
+README
+Include:
+- Grid table
+- Usage examples that match acceptance outputs
+- How to run:
+  - python -m venv .venv && source .venv/bin/activate
+  - pip install -e .
+  - pytest -q
+  - python main.py --encode "ENCRYPT ME 2 DAY"
+- Note (for submitter): email results to volodymyr.khylenko@stuba.sk from xbednarm1@stuba.sk
+
+Produce all files in one response, ready to paste to a new repo.
