@@ -1,0 +1,36 @@
+Lab. Work 3.
+
+Purpose of work (objective):
+1. consolidation of practical coding skills;
+2. solving of tasks using the XOR operator;
+3. obtaining practical skills in solving problems related to the concept of entropy.
+
+Exercise:
+1) Encode two messages (a and b) using the Polybius square.
+   Message a): ENCRYPT ME 2 DAY
+   Message b): your last name.
+
+2) Calculate: a ^ b ^ c ^ a ^ b.
+   At:
+     a = 1011, b = 0110, c = 0100;
+     a = 0101, b = 1110, c = 1101.
+
+3) System X has:
+   1) eight states;
+   2) 128 states.
+   Define entropy (states are equiprobable).
+
+Supporting information (auxiliary info)
+
+Polybius Square.
+
+Polybius' square is a simple substitution cipher. In this example, we will use a 6x6 2D
+matrix containing capital letters of the alphabet and numbers from 0 to 9:
+
+      1 2 3 4 5 6
+    1 | A B C D E F
+    2 | G H I J K L
+    3 | M N O P Q R
+    4 | S T U V W X
+    5 | Y Z 0 1 2 3
+    6 | 4 5 6 7 8 9

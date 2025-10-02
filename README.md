@@ -120,7 +120,3 @@ Each laboratory work includes:
 
 **Student Email:** xbednarm1@stuba.sk  
 **GitHub:** [@Marosko123](https://github.com/Marosko123)
-
----
-
-*This repository demonstrates progressive learning in classical and modern cryptography through hands-on implementation and analysis.*
