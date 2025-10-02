@@ -180,10 +180,15 @@ $RECYCLE.BIN/
 # Project specific
 *.zip
 *.backup
-_zadanie/
 test_output.txt
 temp_*.py
 config.local.py
 settings.local.py
 
-./*.zip
+# AI Assistant instructions (never commit)
+copilot_instructions.txt
+**/copilot_instructions.txt
+**/.github/copilot_instructions.txt
+claude_instructions.txt
+ai_instructions.txt
+prompt.txt
