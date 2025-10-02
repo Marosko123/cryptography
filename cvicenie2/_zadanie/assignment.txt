@@ -6,9 +6,11 @@ Purpose of work (objective):
 3. obtaining practical skills in solving problems related to the concept of entropy.
 
 Exercise:
-1) Encode two messages (a and b) using the Polybius square.
+1) Encode and decode two messages (a and b) using the Polybius square.
    Message a): ENCRYPT ME 2 DAY
    Message b): your last name.
+   
+   Also decode the encoded messages to verify correctness.
 
 2) Calculate: a ^ b ^ c ^ a ^ b.
    At:

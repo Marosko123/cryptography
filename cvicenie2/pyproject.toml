@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zkgra-cvicenie2"
+version = "1.0.0"
+description = "ZKGRA Laboratory Work No. 2: Polybius Square, XOR, and Entropy"
+authors = [
+    {name = "Maroš Bednár", email = "xbednarm1@stuba.sk"}
+]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
