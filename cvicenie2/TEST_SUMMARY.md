@@ -2,7 +2,6 @@
 
 **Date:** October 2, 2025  
 **Student:** Maroš Bednár (xbednarm1@stuba.sk)  
-**Status:** ✅ ALL TESTS PASSED
 
 ## Test Results
 
@@ -112,12 +111,3 @@ python main.py --xor 1011 0110 0100
 python main.py --entropy 8
 python main.py --entropy 128
 ```
-
-## Implementation Notes
-
-- ✅ All functions use Python standard library only
-- ✅ Diacritics handled with `unicodedata` module
-- ✅ All acceptance tests pass exactly as specified
-- ✅ Type hints and docstrings included
-- ✅ Manual test runner works without pytest
-- ✅ Clean, readable code structure

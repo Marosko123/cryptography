@@ -11,7 +11,7 @@ This repository contains all laboratory works for the Fundamentals of Cryptograp
 ```
 ZKGRA/
 ├── cvicenie1/    # Laboratory Work No. 1 - Stream and Block Coding
-├── cvicenie2/    # Laboratory Work No. 2 - (In Progress)
+├── cvicenie2/    # Laboratory Work No. 3 - Done
 └── README.md     # This file
 ```
 
@@ -39,7 +39,7 @@ Implementation of classical cipher algorithms:
 
 ---
 
-### Laboratory Work No. 2 - Polybius Square & XOR Operations
+### Laboratory Work No. 3 - Polybius Square & XOR Operations
 **Status:** 🚧 In Progress
 
 Implementation of Polybius square encoding and XOR operations:
@@ -112,7 +112,7 @@ Each laboratory work includes:
 ## 🏆 Completed Labs
 
 - [x] Laboratory Work No. 1 - Stream and Block Coding
-- [ ] Laboratory Work No. 2 - Polybius Square & XOR
+- [ ] Laboratory Work No. 3 - Polybius Square & XOR
 - [ ] Laboratory Work No. 3 - TBD
 - [ ] Laboratory Work No. 4 - TBD
 

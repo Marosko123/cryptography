@@ -1,4 +1,4 @@
-# ZKGRA - Laboratory Work No. 2
+# ZKGRA - Laboratory Work No. 3
 
 **Fundamentals of Cryptography**  
 **Student:** Maroš Bednár (xbednarm1@stuba.sk)  
@@ -180,36 +180,44 @@ cvicenie2/
 └── pyproject.toml       # Python project configuration
 ```
 
-## Theory
+## Explanation
 
-### Polybius Square
-Classical cipher invented by the ancient Greek historian Polybius. Each letter is replaced by its grid coordinates, making it a simple substitution cipher. The 6×6 variant extends the traditional 5×5 grid to accommodate digits.
+### XOR Task
 
-### XOR (Exclusive OR)
-Binary operation with important properties:
-- **Commutative:** a ⊕ b = b ⊕ a
-- **Associative:** (a ⊕ b) ⊕ c = a ⊕ (b ⊕ c)
-- **Identity:** a ⊕ 0 = a
-- **Self-inverse:** a ⊕ a = 0
+So the task was to calculate a ⊕ b ⊕ c ⊕ a ⊕ b. At first I thought I'd have to XOR everything step by step, but then I remembered that XOR has this property where x ⊕ x = 0. That means if you XOR something with itself, you get zero.
 
-Used extensively in cryptography (stream ciphers, one-time pad).
+Looking at the expression again: a ⊕ b ⊕ c ⊕ a ⊕ b
 
-### Shannon Entropy
-Measures uncertainty in a random variable. For n equiprobable outcomes:
+I can rearrange it (because XOR is commutative, order doesn't matter):
+- (a ⊕ a) ⊕ (b ⊕ b) ⊕ c
 
-**H = log₂(n)**
+Since a ⊕ a = 0 and b ⊕ b = 0:
+- 0 ⊕ 0 ⊕ c = c
 
-Examples:
-- Coin flip (2 outcomes): H = 1 bit
-- Byte (256 outcomes): H = 8 bits
-- This assignment: H(8) = 3 bits, H(128) = 7 bits
+So it just equals c! The a and b terms cancel out.
 
-## Submission
+For the test cases:
+- When a=1011, b=0110, c=0100 → answer is 0100 (just c)
+- When a=0101, b=1110, c=1101 → answer is 1101 (again, just c)
 
-**Author:** Maroš Bednár (xbednarm1@stuba.sk)  
-**Course:** ZKGRA - Fundamentals of Cryptography  
-**Laboratory:** Work No. 2
+I also verified this by computing it bitwise and got the same results.
 
----
+### Entropy Task
 
-*For questions or issues, contact the instructor at volodymyr.khylenko@stuba.sk*
+The entropy formula for when all outcomes are equally likely is pretty straightforward: H = log₂(n), where n is the number of possible states.
+
+For 8 states:
+- H(8) = log₂(8) = log₂(2³) = 3 bits
+
+For 128 states:
+- H(128) = log₂(128) = log₂(2⁷) = 7 bits
+
+This actually makes intuitive sense. If you have 8 different things and they're all equally likely, you need 3 bits to represent them (since 2³ = 8). Same logic for 128 - you need 7 bits because 2⁷ = 128.
+
+The more possible states you have, the more "uncertain" the system is, and the more bits you need to describe which state you're in.
+
+### Connection to Real Ciphers
+
+We talked about DES and AES in class. These are symmetric encryption algorithms that use XOR operations heavily. For example, in AES the "AddRoundKey" step just XORs the data with the key. The nice thing about XOR is that it's reversible - if you XOR something twice with the same key, you get back to the original (because k ⊕ k = 0).
+
+The entropy stuff relates to key sizes. A 128-bit key means there are 2¹²⁸ possible keys, which gives an entropy of 128 bits. That's why bigger keys are more secure - there's more entropy, so more uncertainty for an attacker trying to guess the key.

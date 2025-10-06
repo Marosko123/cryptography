@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "zkgra-cvicenie2"
 version = "1.0.0"
-description = "ZKGRA Laboratory Work No. 2: Polybius Square, XOR, and Entropy"
+description = "ZKGRA Laboratory Work No. 3: Polybius Square, XOR, and Entropy"
 authors = [
     {name = "Maroš Bednár", email = "xbednarm1@stuba.sk"}
 ]
