@@ -1,0 +1,87 @@
+Course: "Fundamentals of Cryptography"           Date: 16-10-2025
+Laboratory work No. 6
+
+The purpose of the laboratory work: the formation of skills in working with encryption algorithms using the Feistel grid.
+The objective of the laboratory work: modeling of coding algorithms using the main elements of the Feistel mesh transformation.
+
+Exercise:
+
+1) Write a program to implement a number of simplified DES operations. The information message is
+encoded in accordance with the general scheme of the DES algorithm. The programs may be written in a
+high-level language and implement DES operations in a simplified form, but they are simplified as follows:
+ - the use of two rounds;
+ - no modification of keys in each round;
+ - the expansion operation is not converted.
+
+Specification of the task:
+ 1. As a test information notification, the vikorist notification is provided by USTASI. The English alphabet
+    is used as part of the alphabet. I – student’s official number. (Note in the sheet: “the skin letter is one bit”.)
+ 2. Parts L and R are designated as a subdivision of information communication throughout.
+ 3. The mental table of the COB permutation of IP is shown below (as printed on the sheet).
+
+2) Using the Intel x86 IP initial and final permutation tables and the original DES IP initial and final
+   permutation tables (shown below), fill in the correspondence table between the following elements
+   of all tables:
+
+   ┌───────────────────────────────────────────────────────────────┬───────────────────────────────────────────────┬───────────────────────────────────────────────┐
+   │ Element value in initial permutation table in Intel x86       │ Element value in initial permutation table    │ Element value in final permutation table      │
+   │                                                               │ in original DES                              │ in original DES                               │
+   ├───────────────────────────────────────────────────────────────┼───────────────────────────────────────────────┼───────────────────────────────────────────────┤
+   │ 14                                                            │                                               │                                               │
+   │ 23                                                            │                                               │                                               │
+   │ 61                                                            │                                               │                                               │
+   │ 6                                                             │                                               │                                               │
+   └───────────────────────────────────────────────────────────────┴───────────────────────────────────────────────┴───────────────────────────────────────────────┘
+
+
+Initial bit permutation (IP). Bit numbering in Intel x86.
+(Each cell holds a bit index 0..63.)
+
+ 6  14 22 30 38 46 54 62
+ 4  12 20 28 36 44 52 60
+ 2  10 18 26 34 42 50 58
+ 0   8 16 24 32 40 48 56
+ 7  15 23 31 39 47 55 63
+ 5  13 21 29 37 45 53 61
+ 3  11 19 27 35 43 51 59
+ 1   9 17 25 33 41 49 57
+
+
+Final bit permutation (IP^-1). Bit numbering in Intel x86.
+
+24 56 16 48  8 40  0 32
+25 57 17 49  9 41  1 33
+26 58 18 50 10 42  2 34
+27 59 19 51 11 43  3 35
+28 60 20 52 12 44  4 36
+29 61 21 53 13 45  5 37
+30 62 22 54 14 46  6 38
+31 63 23 55 15 47  7 39
+
+Explanation (from the sheet):
+The first most significant bit in the numbering of bits in Intel x86 – and we see it is the number 6 – goes to
+the first place in the numbering of bits in the original DES – and this we see is the 58th place. That is, the bit
+with index 6 maps to 58 in the DES IP table. In the final permutation table (IP^-1), the place 58 is in the second
+row from the bottom and the seventh column. Therefore the bit “6” should be placed in this cell. It has to be in
+the first one again so that we can decode the message correctly. Question on the sheet: where should our number 6 go?
+We find the answer in the table of the final permutation: this place is 40 (since the number 40 itself is in that position).
+
+3) Calculate the result of replacing the input 6-bit number using
+   – the first S-box (the table was given in the lecture);
+   – the second S-box (given below)
+   if the first 6-bit part of the input block has the values:
+
+   A. 011010
+   B. 100111
+   C. 110110
+   D. 110011
+
+The second DES S-box (S2).  Row index = (b1 b6 as 2-bit number), Column index = (b2..b5 as 4-bit number).
+
+      0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15
+  0 | 15  1  8 14  6 11  3  4  9  7  2 13 12  0  5 10
+  1 |  3 13  4  7 15  2  8 14 12  0  1 10  6  9 11  5
+  2 |  0 14  7 11 10  4 13  1  5  8 12  6  9  3  2 15
+  3 | 13  8 10  1  3 15  4  2 11  6  7 12  0  5 14  9
+
+Application: Simple General Scheme of DES.
