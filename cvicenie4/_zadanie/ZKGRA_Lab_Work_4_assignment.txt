@@ -1,0 +1,39 @@
+Course: "Fundamentals of Cryptography".
+Laboratory work No. 4. (part 1)
+
+Purpose of work:
+learn to perform
+1. operations by modulus.
+2. operations for calculating the multiplicative reciprocal
+3. form a vector of the remainders of the number by modulus.
+
+Exercise 1. Perform the following operations:
+2 mod 4 =
+78 mod 33 =
+51 mod 7 =
+27 mod 47 =
+7^-1 mod 47 =
+19^-1 mod 7 =
+4^-1 mod 7 =
+4^-1 mod 15 =
+3^-1 mod 7 =
+4^-1 mod 17 =
+9^-1 mod 17 =
+2^-1 mod 6 =
+
+Exercise 2.
+2.1. Form the vector of residuals of the number 4 by modulus 9.
+2.2. Form the vector of residuals of the number 15 by modulus 7.
+2.3. Form the vector of residuals of the number 32 by modulus 29.
+
+
+Course: "Fundamentals of Cryptography".
+Laboratory work No. 4 (part 2).
+
+Exercise 3.
+3.1. Calculate a common secret key in an asymmetric encryption algorithm for a chosen functions:
+a) 2^x (mod 4);
+b) 78^x (mod 33).
+The secret keys for the transmitter and receiver: 6 and 3.
+
+3.2. Answer the question: is it possible to use the function 2^-1 (mod 6) as a common functions and justify your answer.
