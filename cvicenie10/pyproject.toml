@@ -1,0 +1,9 @@
+[project]
+name = "cvicenie10"
+version = "0.1.0"
+description = "Laboratory work No. 10 - Redundant codes and Huffman coding"
+authors = [
+    {name = "Maros Bednar", email = "marosbednar@example.com"},
+]
+dependencies = []
+requires-python = ">=3.10"
